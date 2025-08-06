@@ -1,0 +1,700 @@
+:root {
+  --azul: #06052f;
+  --dourado: #b8860b;
+  --branco: #f3f1ec;
+  --cinza: #E5E5E5;
+  --preto: #111;
+  --bg-preto: #000000;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--branco);
+  color: var(--preto);
+  padding-top: 100px;
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dourado);
+}
+
+/* ===================== CABEÇALHO ===================== */
+#header {
+  min-height: 100vh;
+  background-color: var(--azul);
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--azul);
+  color: var(--branco);
+  padding: 20px 10px;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  z-index: 99;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+
+nav ul li a {
+  color: var(--branco);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background-color: var(--dourado);
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* ===================== TÍTULO + CARROSSEL ===================== */
+.texto-cabecalho-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.texto-esquerda {
+  flex: 1;
+  min-width: 280px;
+}
+
+.imagem-direita {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.imagem-direita img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.texto-cabecalho-grid span {
+  color: var(--dourado);
+}
+
+.texto-cabecalho-grid .habilidades {
+  margin-top: 10px;
+  color: var(--dourado);
+}
+
+
+/* ===================== CONTEÚDO GERAL ===================== */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.subtitulo {
+  color: var(--dourado);
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.modalidades,
+.galeria,
+.contato,
+.sobre {
+  scroll-margin-top: 55px;
+}
+
+#sobre,
+#modalidades,
+#galeria-container {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+
+  .modalidades,
+  .galeria,
+  .contato,
+  .home,
+  .sobre,
+  .header {
+    scroll-margin-top: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .modalidades,
+  .galeria,
+  .contato,
+  .home,
+  .sobre,
+  .header {
+    scroll-margin-top: 200px;
+  }
+}
+
+.modalidades,
+.galeria,
+.contato {
+  margin-top: 40px;
+}
+
+/* ===================== SOBRE ===================== */
+.sobre-col-1 img {
+  width: 100%;
+  border-radius: 15px;
+}
+.aba-titulos {
+  display: flex;
+  margin: 20px 0 40px;
+}
+
+.aba-links {
+  margin: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  color: var(--dourado);
+}
+
+.aba-links::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background: var(--dourado);
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  transition: 0.5s;
+}
+
+.aba-links.link-ativo::after {
+  width: 50%;
+}
+
+.aba-conteudos {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0s ease-out, opacity 0.9s ease-out;
+
+}
+
+.aba-conteudos.aba-ativa {
+  max-height: 500px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+
+.aba-conteudos p {
+  font-size: 16px;
+}
+
+/* ===================== MODALIDADES ===================== */
+.lista-modalidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lista-modalidades h2 {
+  color: var(--preto);
+}
+
+
+.lista-modalidades div {
+  flex: 1 1 250px;
+  background-color: var(--cinza);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.lista-modalidades.ativa {
+  background-color: var(--dourado);
+}
+
+.lista-modalidades div:hover {
+  background-color: var(--dourado);
+  transform: translateY(-10px);
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+.lista-modalidades div.ativo {
+  background-color: var(--dourado);
+  transition: background-color 0.3s ease-in;
+}
+
+.lista-modalidades ul {
+  margin-top: 10px;
+  background-color: var(--dourado);
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--branco);
+}
+
+.info-modalidade {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+
+.info-modalidade.visivel {
+  max-height: 500px;
+  opacity: 1;
+}
+
+
+/* ===================== GALERIA ===================== */
+* {
+  box-sizing: border-box;
+}
+
+#verMaisBtn {
+  display: block;
+  margin: 20px auto;
+  background-color: var(--dourado);
+  color: var(--azul);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  max-height: 600px;
+}
+#galeria-container {
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.8s ease; 
+}
+
+#galeria-container.expandida {
+  max-height: 5000px; 
+}
+
+
+
+h2 {
+  color: var(--dourado);
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+  cursor: pointer;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row,
+.row > .column {
+  padding: 8px;
+  
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide columns by default */
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row div:hover {
+  background-color: var(--dourado);
+  transform: translateY(-10px);
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+/* Content */
+.content {
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.content div:hover {
+  background-color: var(--dourado);
+  transform: translateY(-10px);
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: var(--cinza);
+  cursor: pointer;
+}
+
+/* Add a grey background color on mouse-over */
+.btn:hover {
+  background-color: var(--dourado);
+  transform: translateY(-5px);
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+/* Add a dark background color to the active button */
+.btn.active {
+  background-color: var(--dourado);
+  color: var(--preto);
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80vh;
+  animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1)}
+  to {transform: scale(1)}
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: var(--branco);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: var(--branco);
+  font-size: 60px;
+  padding: 16px;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.modal-caption {
+  text-align: center;
+  color: var(--branco);
+  padding: 10px 0;
+}
+
+
+/* ===================== FORMULÁRIO ===================== */
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid var(--azul);
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+  background-color: var(--dourado);
+  color: var(--azul);
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--dourado)
+}
+
+.social-links a {
+  font-size: 1.8rem;
+  color: var(--dourado);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 10px;
+  transition: transform 0.3s, color 0.3s;
+  animation: popUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.social-links {
+  margin-top: -5%;
+}
+
+
+.social-links a:hover {
+  transform: scale(1.2);
+  color: var(--dourado);
+}
+
+.sabado {
+  margin-left: 5.5%;
+  margin-top: -1.1%;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+#location {
+  background-color: var(--branco);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(144, 89, 202, 0.15);
+  transition: all 0.5s ease;
+}
+
+#location h2 {
+  color: var(--dourado);
+  font-size: 2.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+#location p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+#location strong {
+  color: var(--dourado);
+}
+
+
+/* ===================== RODAPÉ ===================== */
+footer {
+  background-color: var(--azul);
+  color: var(--branco);
+  text-align: center;
+  padding: 20px;
+}
+
+/* BOTÃO DE MODO ESCURO FIXO */
+.botao-darkmode-fixo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: 2px solid var(--dourado);
+  color: var(--dourado);
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.botao-darkmode-fixo:hover {
+  background-color: var(--dourado);
+  color: var(--branco);
+}
+
+/* MODO ESCURO */
+body.modo-escuro {
+  background-color: var(--bg-preto);
+  color: var(--branco);
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+body.modo-escuro .lista-modalidades h2 {
+  color: var(--branco);
+}
+
+body.modo-escuro .lista-modalidades div {
+  background-color: var(--preto);
+  color: var(--branco);
+  border-color: var(--branco)
+}
+
+body.modo-escuro .lista-modalidades div:hover {
+  background-color: var(--dourado);
+  transform: translateY(-10px);
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+body.modo-escuro .lista-modalidades div.ativo {
+  background-color: var(--dourado);
+  transition: background-color 0.3s ease;
+}
+
+body.modo-escuro .content {
+  background-color: var(--preto-);
+  padding: 10px;
+}
+
+body.modo-escuro .content div:hover {
+  background-color: var(--dourado);
+  transform: translateY(-10px);
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+
+
+
+body.modo-escuro input,
+body.modo-escuro textarea {
+  background-color: var(--preto);
+  color: var(--branco);
+  border-color: var(--branco)
+}
+
+body.modo-escuro .social-links a {
+  font-size: 1.8rem;
+  margin: 10px;
+  color: var(--dourado);
+  transition: transform 0.3s, color 0.3s;
+  animation: popUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+body.modo-escuro .social-links a:hover {
+  transform: scale(1.2);
+  color: var(--dourado);
+}
+
+body.modo-escuro .sabado {
+  margin-left: 5.5%;
+  margin-top: -1.1%;
+  color: var(--cinza);
+}
+body.modo-escuro #location {
+  background-color: var(--preto);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(144, 89, 202, 0.15);
+  transition: all 0.5s ease;
+}
+
+body.modo-escuro #location p {
+  font-size: 1.1rem;
+  color: var(--cinza);
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+
+body.modo-escuro a {
+  color: var(--branco);
+}
+
+body.modo-escuro .botao-darkmode-fixo {
+  border-color: var(--dourado);
+  color: var(--dourado);
+}
+
+body.modo-escuro .botao-darkmode-fixo:hover {
+  background-color: var(--dourado);
+  color: var(--preto)
+}

@@ -1,0 +1,576 @@
+:root {
+  --azul: #06052f;
+  --dourado: #b8860b;
+  --branco: #f3f1ec;
+  --cinza: #E5E5E5;
+  --preto: #111;
+  --bg-preto: #000000;
+
+}
+
+body {
+  background-color: var(--azul);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85px;
+  height: 150%;
+  transition: .3s;
+  scrollbar-width: none;
+  overflow: hidden scroll;
+  background: #ffffff12;
+  -ms-overflow-style: none;
+  padding: 20px 20px 20px 0;
+  backdrop-filter: blur(5px);
+  box-shadow: 8px 0px 9px 0px #00000014;
+}
+
+.menu:hover {
+  width: 260px;
+}
+
+.menu:hover li span:nth-child(2) {
+  display: block;
+}
+
+.menu-content li {
+  list-style: none;
+  border-radius: 0px 50px 50px 0;
+  transition: .3s;
+  margin-bottom: 20px;
+}
+
+.menu-content li:hover {
+  background: #0c0c0c;
+}
+
+.menu-content li span:nth-child(2) {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dourado);
+  display: flex;
+  align-items: center;
+  font-family: 'calibri';
+}
+
+.material-symbols-outlined {
+  padding: 10px;
+  font-size: 25px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--bg-preto);
+}
+.imagem-direita {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* altura total da tela */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.imagem-direita img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--branco);
+}
+
+main {
+  margin-left: 85px; /* largura mínima do menu recolhido */
+  padding: 40px 20px;
+  transition: margin-left .3s;
+}
+.menu.expanded + main {
+  margin-left: 260px; /* quando o menu expande */
+}
+
+main h2 {
+  color: var(--dourado);
+  margin-top: 0;
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 0 auto 48px auto; /* centraliza */
+  max-width: 900px;
+}
+
+
+.admin-card label {
+  font-weight: bold;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.admin-card input[type="text"],
+.admin-card input[type="email"],
+.admin-card textarea {
+  width: 100%;
+  max-width: 850px;
+  padding: 10px;
+  border: 1px solid var(--dourado);
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--preto);
+}
+
+.admin-card textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-card input[type="file"] {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.admin-card input[type="text"],
+.admin-card input[type="email"],
+.admin-card input[type="password"],
+.admin-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--dourado);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--preto);
+    background: var(--branco);
+    margin-bottom: 12px; /* Adiciona espaço entre os campos */
+}
+
+
+
+.botao-admin,
+.btn-pequeno {
+  background: var(--dourado);
+  color: var(--azul);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .2s;
+}
+.botao-admin {
+  padding: 12px 28px;
+  margin-top: 16px;
+}
+.btn-pequeno {
+  padding: 6px 14px;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.botao-admin:hover, .btn-pequeno:hover {
+  background: var(--branco);
+  color: var(--azul);
+}
+
+.preview-img {
+  max-width: 300px;
+  border-radius: 10px;
+  display: block;
+  margin: 10px 0;
+}
+
+/* Lista dinâmicas */
+.itens-repetiveis {
+  margin-top: 16px;
+}
+.itens-repetiveis .item {
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.itens-repetiveis .item h4 {
+  margin: 0 0 8px 0;
+  color: var(--dourado);
+  font-size: 18px;
+}
+.itens-repetiveis .remover-item {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--erro);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Galeria: grade de miniaturas */
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.grid-galeria figure {
+  margin: 0;
+  position: relative;
+}
+.grid-galeria img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+.grid-galeria figcaption {
+  display: none;
+}
+.grid-galeria button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  background: var(--erro);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Feedback salvo */
+.msg-salvo {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--ok);
+  display: none;
+}
+.msg-salvo.visivel { display:block; }
+
+/* âncoras deslocadas para compensar topo */
+.anchor-offset {
+  scroll-margin-top: 40px;
+}
+
+@media (max-width:600px){
+  main{padding:32px 16px;}
+  .admin-card{padding:20px;}
+}
+
+:root {
+  --erro: #ff4d4d;
+  --ok: #4caf50;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--branco);
+}
+
+main {
+  margin-left: 85px; /* largura mínima do menu recolhido */
+  padding: 40px 20px;
+  transition: margin-left .3s;
+}
+.menu.expanded + main {
+  margin-left: 260px; /* quando o menu expande */
+}
+
+main h2 {
+  color: var(--dourado);
+  margin-top: 0;
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 48px;
+  max-width: 900px;
+}
+
+.admin-card label {
+  font-weight: bold;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.admin-card input[type="text"],
+.admin-card input[type="email"],
+.admin-card textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--dourado);
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--preto);
+}
+
+.admin-card input,
+.admin-card textarea {
+    margin-bottom: 12px; /* margem entre os campos */
+}
+
+.admin-card input[type="text"],
+.admin-card input[type="email"],
+.admin-card input[type="password"],
+.admin-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--dourado);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--preto);
+    background: var(--branco);
+    margin-bottom: 12px; /* Adiciona espaço entre os campos */
+}
+
+.admin-card input[type="file"] {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.botao-admin,
+.btn-pequeno {
+  background: var(--dourado);
+  color: var(--azul);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .2s;
+}
+.botao-admin {
+  padding: 12px 28px;
+  margin-top: 16px;
+}
+.btn-pequeno {
+  padding: 6px 14px;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+.botao-admin:hover, .btn-pequeno:hover {
+  background: var(--branco);
+  color: var(--azul);
+}
+
+.preview-img {
+  max-width: 300px;
+  border-radius: 10px;
+  display: block;
+  margin: 10px 0;
+}
+
+/* Lista dinâmicas */
+.itens-repetiveis {
+  margin-top: 16px;
+}
+.itens-repetiveis .item {
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.itens-repetiveis .item h4 {
+  margin: 0 0 8px 0;
+  color: var(--dourado);
+  font-size: 18px;
+}
+.itens-repetiveis .remover-item {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--erro);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Galeria: grade de miniaturas */
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.grid-galeria figure {
+  margin: 0;
+  position: relative;
+}
+.grid-galeria img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+.grid-galeria figcaption {
+  display: none;
+}
+.grid-galeria button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  background: var(--erro);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Feedback salvo */
+.msg-salvo {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--ok);
+  display: none;
+}
+.msg-salvo.visivel { display:block; }
+
+/* âncoras deslocadas para compensar topo */
+.anchor-offset {
+  scroll-margin-top: 40px;
+}
+
+@media (max-width:600px){
+  main{padding:32px 16px;}
+  .admin-card{padding:20px;}
+}
+
+.menu-content li.dropdown {
+  position: relative;
+}
+
+.menu-content li.dropdown .dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  background: none;
+  box-shadow: none;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.menu-content li.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.menu-content li.dropdown .dropdown-content li {
+  margin-bottom: 10px;
+}
+
+.menu-content li.dropdown .dropdown-content li a {
+  color: var(--dourado);
+  font-size: 14px;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Tabela personalizada para admin */
+/* Tabela personalizada para admin */
+.tabela-admin {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 16px;
+    font-family: Arial, sans-serif;
+    color: var(--branco);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabela-admin th,
+.tabela-admin td {
+    padding: 14px 12px;
+    text-align: left;
+}
+
+.tabela-admin th {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--dourado);
+    font-weight: bold;
+}
+
+.tabela-admin tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tabela-admin tr:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    cursor: default;
+}
+
+/* Botões de ação */
+.botao-acao {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    color: var(--branco);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 6px;
+    text-decoration: none; /* caso use <a> */
+    display: inline-block;
+}
+
+/* Botão editar em verde */
+.botao-editar {
+    background-color: #28a745; /* verde */
+}
+
+.botao-editar:hover {
+    background-color: #218838;
+}
+
+/* Botão excluir em vermelho */
+.botao-excluir {
+    background-color: #dc3545; /* vermelho */
+}
+
+.botao-excluir:hover {
+    background-color: #c82333;
+}
