@@ -1,4 +1,5 @@
 <?php
+include ("verifica.php");
 include("../banco/conexao.php");
 
 if (isset($_GET['idUsuario'])) {
@@ -36,7 +37,7 @@ if (isset($_GET['idUsuario'])) {
     <!-- MENU LATERAL (expansão por hover já em styleadmin.css) -->
      <nav class="menu" id="menuAdmin">
         <ul class="menu-content">
-            <li><a href="#Home"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+           <li><a href="adm.php"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
             <li class="dropdown">
               <a href="listarSobre.php"><span class="material-symbols-outlined">dashboard</span><span>Sobre</span></a>
 </li>
@@ -63,7 +64,7 @@ if (isset($_GET['idUsuario'])) {
                           </li>
                           
                         
-            <li><a href="#Logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+ <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
 <main>

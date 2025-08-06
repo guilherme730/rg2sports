@@ -1,4 +1,5 @@
 <?php
+    include ("verifica.php");
     include ("../banco/conexao.php");
 ?>
 
@@ -22,7 +23,7 @@
     <!-- MENU LATERAL (expansão por hover já em styleadmin.css) -->
     <nav class="menu" id="menuAdmin">
         <ul class="menu-content">
-            <li><a href="#Home"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+           <li><a href="adm.php"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
             <li class="dropdown">
               <a href="listarSobre.php"><span class="material-symbols-outlined">dashboard</span><span>Sobre</span></a>
 </li>
@@ -49,7 +50,7 @@
                           </li>
                           
                         
-            <li><a href="#Logout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+   <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
 <main>
