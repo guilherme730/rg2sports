@@ -1,10 +1,8 @@
-<?php 
-
-session_start();
-
+<?php
+include ("verifica.php");
+include("../banco/conexao.php");
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,13 +54,38 @@ session_start();
             <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
+<main>
+  <div class="admin-card">
+    <h2>Localização</h2>
+                        <?php
+                        if(isset($_GET['idLocalizacao'])) {
+                            $localizacao_id = mysqli_real_escape_string($conexao, $_GET['idLocalizacao']);
+                            $sql = "SELECT * FROM localizacao WHERE idLocalizacao = '$localizacao_id'";
+                            $query = mysqli_query($conexao, $sql);
 
-    <main>
-        <div class="imagem-direita">
-        <img src="../imagens/RG2 Sports.pngTransparente.png" alt="">
-        </div>
-    </main>
-   
+                            if (mysqli_num_rows($query) > 0) {
+                                $localizacao = mysqli_fetch_array($query);
+                                //var_dump($usuario);
+                    ?>
+
+    <p><strong>Endereço:</strong> <?= htmlspecialchars($localizacao['enderecoLocalizacao']) ?></p>
+    <p><strong>Telefone::</strong> <?= htmlspecialchars($localizacao['telefoneLocalizacao']) ?></p>
+    <p><strong>Email:</strong> <?= htmlspecialchars($localizacao['emailLocalizacao']) ?></p>
+    <p><strong>Instagram:</strong><?= htmlspecialchars($localizacao['instagramLocalizacao']) ?></p>
+    <p><strong>Horários:</strong> <?= htmlspecialchars($localizacao['horarioLocalizacao']) ?></p>
+    <p><strong>Mapa:</strong> <?= htmlspecialchars($localizacao['mapaEmbedLocalizacao']) ?></p>
+
+    <div style="margin-top: 24px;">
+      <a href="listarLocalizacao.php" class="botao-admin">Voltar</a>
+    </div>
+  </div>
+                      <?php
+                            } else {
+                                echo "<h5>Usuário não encontrado!</h5>";
+                            }
+                        }
+                    ?>
+</main>
+
 </body>
-
 </html>

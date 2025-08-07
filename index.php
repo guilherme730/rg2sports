@@ -1,0 +1,594 @@
+<?php
+    include ("banco/conexao.php");
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RG2 Sports</title>
+  <link rel="stylesheet" href="folha/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://kit.fontawesome.com/f267bbc3d3.js" crossorigin="anonymous"></script>
+
+</head>
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<body>
+  <!-- --------------- CABEÇALHO DO SITE --------------- -->
+  <div id="header" class="header">
+    <div class="container">
+      <nav class="cabecalho">
+        <img src="imagens/RG2 Sports.pngTransparente.png" class="logo" alt="Logotipo RG2" />
+        <ul>
+          <li><a href="#header">Home</a></li> |
+          <li><a href="#sobre">Sobre</a></li> |
+          <li><a href="#modalidades">Modalidades</a></li> |
+          <li><a href="#galeria-container">Galeria</a></li> |
+          <li><a href="#contato">Contato</a></li> |
+          <li><a href="#onde-estamos">Onde Estamos</a></li> |
+        </ul>
+      </nav>
+      <div class="texto-cabecalho-grid">
+        <div class="texto-esquerda">
+          <h1>Bem-vindo à <span>RG2 Escola Esportiva</span></h1>
+          <p>A melhor escola de <span class="habilidades"></span></p>
+        </div>
+        <div class="imagem-direita">
+          <img id="imagem-carrossel" src="imagens/RG2 Sports.pngTransparente.png" alt="Esportes RG2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <div id="sobre"> 
+    <div class="container">
+    <?php
+  $sql = "SELECT * FROM sobre ORDER BY idSobre DESC LIMIT 1";
+  $query = mysqli_query($conexao, $sql);
+  $sobre = mysqli_fetch_assoc($query);
+?>
+
+      <div class="linha">
+        <div class="sobre-col-2">
+          <h1 class="subtitulo">Sobre</h1>
+          <div class="sobre-col-1">
+            <img src="imagens/Firefly_foto  aérea de uma escola de esportes 98422.jpg" alt="foto da escola">
+          </div>
+          <p><?= htmlspecialchars($sobre['textoSobre'])?></p>
+
+          <div class="aba-titulos">
+            <p class="aba-links" onclick="abriraba('missao')">Missão</p>
+            <p class="aba-links" onclick="abriraba('visao')">Visão</p>
+            <p class="aba-links" onclick="abriraba('valores')">Valores</p>
+          </div>
+
+          <div class="aba-conteudos" id="missao">
+          <p><?= htmlspecialchars($sobre['missaoSobre'])?></p>
+          </div>
+
+          <div class="aba-conteudos" id="visao">
+            <p><p><?= htmlspecialchars($sobre['visaoSobre'])?></p></p>
+          </div>
+
+          <div class="aba-conteudos" id="valores">
+            <p><p><?= htmlspecialchars($sobre['valoresSobre'])?></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- MODALIDADES -->
+  <div id="modalidades" class="container">
+    <h2 class="subtitulo">Modalidades Esportivas</h2>
+    <div class="lista-modalidades">
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#9917;</span> Futebol</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Aulas focadas no desenvolvimento técnico, tático e físico dos atletas, com treinos voltados para fundamentos como passe, finalização, marcação e trabalho em equipe.</li>
+          <li><strong>Horários:</strong> Segunda e Quarta - 17h às 18h | Terça e Quinta - 09h às 10h</li>
+          <li><strong>Professores:</strong> Rafael Oliveira e Carla Mendes</li>
+        </ul>
+      </div>
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#127936;</span>Basquete</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Aulas que trabalham drible, passe, arremesso e posicionamento tático, além do condicionamento físico, raciocínio rápido e espírito de equipe.</li>
+          <li><strong>Horários:</strong> Segunda e Quarta - 19h às 20h | Quarta e Sábado - 09:30h às 10:30</li>
+          <li><strong>Professores:</strong> João Silva e Daniela Marques</li>
+        </ul>
+      </div>
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#127952;</span> Vôlei</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Treinos dinâmicos que desenvolvem fundamentos como saque, recepção, levantamento, ataque e bloqueio, além de estratégias coletivas e disciplina tática.</li>
+          <li><strong>Horários:</strong> Terça e Quinta - 14h às 15h | Quarta e Sábado - 08h às 09h</li>
+          <li><strong>Professores:</strong> Lucas Souza e Luana Xavier</li>
+        </ul>
+      </div>
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#127992;</span> Tênis</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Treinamentos individuais e em dupla voltados para a técnica de golpes (forehand, backhand, saque), deslocamento e estratégia de jogo.</li>
+          <li><strong>Horários:</strong> Terça e Quinta - 18h às 19h | Segunda e Quarta - 10h às 11h</li>
+          <li><strong>Professores:</strong> Fernando Alonso e Eduarda Silva</li>
+        </ul>
+      </div>
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#127955;</span> Tênis de Mesa</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Aula voltada para coordenação motora, reflexo, técnica de saque e efeito, com foco em agilidade e concentração.</li>
+          <li><strong>Horários:</strong> Segunda e Quarta - 09h às 10h | Quinta e Sábado - 16h às 17h</li>
+          <li><strong>Professores:</strong> Thiago Cruz e Bruna Lopes</li>
+        </ul>
+      </div>
+      <div onclick="toggleModalidade(this)">
+        <h2><span style='font-size:25px;'>&#127946;</span> Natação</h2>
+        <ul class="info-modalidade">
+          <li><strong>Descrição:</strong> Aulas para todas as idades e níveis, com foco em adaptação ao meio líquido, respiração, flutuação e os quatro estilos de nado (crawl, costas, peito e borboleta).</li>
+          <li><strong>Horários:</strong> Segunda e Quarta - 14h às 15h | Terça e Quinta - 10h às 11h</li>
+          <li><strong>Professores:</strong> Luis Santana e Joana Pires</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- GALERIA -->
+  <div id="galeria-container" class="container">
+    <h2>Galeria de Treinamentos</h2>
+    <div id="myBtnContainer">
+      <button class="btn active" onclick="filterSelection('tudo')"> Mostrar Tudo</button>
+      <button class="btn" onclick="filterSelection('futebol')"> Futebol</button>
+      <button class="btn" onclick="filterSelection('volei')"> Vôlei</button>
+      <button class="btn" onclick="filterSelection('basquete')"> Basquete</button>
+      <button class="btn" onclick="filterSelection('tenis')"> Tênis</button>
+      <button class="btn" onclick="filterSelection('tênis de mesa')"> Tênis de Mesa</button>
+      <button class="btn" onclick="filterSelection('natacao')"> Natação</button>
+    </div>
+
+    <!-- Portfolio Gallery Grid -->
+    <div class="row">
+      <div class="column futebol">
+        <div class="content">
+          <img id="futebol" src="imagens/Firefly_gere imagem de uma escola de futebol 351647.jpg" alt="Campo de futebol 1"
+            style="width:100%">
+          <h4>Futebol</h4>
+          <p>Campo de futebol 1</p>
+        </div>
+      </div>
+      <div class="column futebol">
+        <div class="content">
+          <img src="imagens/infraestrutura-futebol.jpg" alt="Campos de futebol 2" style="width:100%">
+          <h4>Futebol</h4>
+          <p>Campo de futebol 2 </p>
+        </div>
+      </div>
+      <div class="column futebol">
+        <div class="content">
+          <img src="imagens/futebol.jpg" alt="Alunos jogando futebol" style="width:100%">
+          <h4>Futebol</h4>
+          <p>Aula de futebol</p>
+        </div>
+      </div>
+
+      <div class="column volei">
+        <div class="content">
+          <img src="imagens/Firefly_gere imagem de uma escola de vôlei 291593.jpg" alt="Quadra de volei 1" style="width:100%">
+          <h4>Vôlei</h4>
+          <p>Quadra de vôlei 1</p>
+        </div>
+      </div>
+      <div class="column volei">
+        <div class="content">
+          <img src="imagens/infraestrutura-volei.jpg" alt="Quadra de volei 2" style="width:100%">
+          <h4>Vôlei</h4>
+          <p>Quadra de vôlei 2</p>
+        </div>
+      </div>
+      <div class="column volei">
+        <div class="content">
+          <img src="imagens/volei.jpg" alt="Alunas jogando vôlei" style="width:100%">
+          <h4>Vôlei</h4>
+          <p>Aula de vôlei</p>
+        </div>
+      </div>
+
+      <div class="column basquete">
+        <div class="content">
+          <img src="imagens/Firefly_gere imagem de uma quadra de basquete 291593.jpg" alt="Quadra de basquete 1" style="width:100%">
+          <h4>Basquete</h4>
+          <p>Quadra de basquete 1</p>
+        </div>
+      </div>
+      <div class="column basquete">
+        <div class="content">
+          <img src="imagens/infraestrutura-basquete.jpg" alt="Quadra de basquete 2" style="width:100%">
+          <h4>Basquete</h4>
+          <p>Quadra de basquete 2</p>
+        </div>
+      </div>
+      <div class="column basquete">
+        <div class="content">
+          <img src="imagens/basquete.jpg" alt="Alunos jogando basquete" style="width:100%">
+          <h4>Basquete</h4>
+          <p>Aula de basquete</p>
+        </div>
+      </div>
+
+      <div class="column tenis">
+        <div class="content">
+          <img src="imagens/Firefly_crie imagens de uma escola de tênis 704497.jpg" alt="Quadra de tênis 1" style="width:100%">
+          <h4>Tênis</h4>
+          <p>Quadra de tênis 1</p>
+        </div>
+      </div>
+      <div class="column tenis">
+        <div class="content">
+          <img src="imagens/infraestrutura-tenis.jpg" alt="Quadra de tênis 2" style="width:100%">
+          <h4>Tênis</h4>
+          <p>Quadra de tênis 2</p>
+        </div>
+      </div>
+      <div class="column tenis">
+        <div class="content">
+          <img src="imagens/tenis.jpg" alt="Alunos jogando tênis" style="width:100%">
+          <h4>Tênis</h4>
+          <p>Aula de tênis</p>
+        </div>
+      </div>
+
+      <div class="column tênis de mesa">
+        <div class="content">
+          <img src="imagens/Firefly_crie imagens de uma escola de tênis de mesa458324.jpg" alt="Tênis de mesa 1"
+            style="width:100%">
+          <h4>Tênis de Mesa</h4>
+          <p>Área de tênis de mesa 1</p>
+        </div>
+      </div>
+      <div class="column tênis de mesa">
+        <div class="content">
+          <img src="imagens/infraestrutura-tenis-de-mesa.jpg" alt="Tênis de mesa 2"
+            style="width:100%">
+          <h4>Tênis de Mesa</h4>
+          <p>Área de tênis de mesa s<p>
+        </div>
+      </div>
+      <div class="column tênis de mesa">
+        <div class="content">
+          <img src="imagens/tenis-de-mesa.jpg" alt="Alunos jogando tênis de mesa"
+            style="width:100%">
+          <h4>Tênis de Mesa</h4>
+          <p>Aula de tênis de mesa</p>
+        </div>
+      </div>
+
+      <div class="column natacao">
+        <div class="content">
+          <img src="imagens/Firefly_crie imagens de uma escola de natação 458324.jpg" alt="Área de natação 1" style="width:100%">
+          <h4>Natação</h4>
+          <p>Psicina de natação 1</p>
+        </div>
+      </div>
+      <div class="column natacao">
+        <div class="content">
+          <img src="imagens/infraestrutura-natação.jpg" alt="Área de natação 2" style="width:100%">
+          <h4>Natação</h4>
+          <p>Piscina de natação 2</p>
+        </div>
+      </div>
+      <div class="column natacao">
+        <div class="content">
+          <img src="imagens/natação.jpg" alt="Alunos praticando natação" style="width:100%">
+          <h4>Natação</h4>
+          <p>Aula de natação</p>
+        </div>
+      </div>
+      <!-- END GRID -->
+    </div>
+  </div>
+  <button id="verMaisBtn" onclick="toggleGaleria()">Ver mais</button>
+
+
+
+
+  <!-- CONTATO -->
+  <div id="contato" class="container contato">
+    <h2 class="subtitulo">Contato</h2>
+    <form>
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+    <!-- ONDE ESTAMOS -->
+    <div id="onde-estamos" class="container">
+  <section id="location">
+    <h2>Onde Estamos</h2>
+    <p>📍 Rua Ayrton Senna, 123 – Centro <br />
+      📞 (00) 90000-0000<br />
+      📩 contato@rg2sports.com<br />
+      📸 @rg2sports<br />
+      🕰️ Segunda a Sexta: 09h às 21h<br /> 
+      <div class="sabado">
+      Sábados: 09h às 15h </div></p>
+
+    <!-- Redes Sociais -->
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+
+  </section>
+
+
+
+  <footer>
+    <p>&copy; Copyright © 2025. RG2 Escola Esportiva.</p>
+  </footer>
+  <script>
+    var typed = new Typed('.habilidades', {
+      strings: ['Futebol.', 'Vôlei.', 'Basquete.', 'Tênis de Mesa.', 'Tênis.', 'Natação.', 'Esportes.'],
+      typeSpeed: 80,
+      backSpeed: 40,
+      backDelay: 500,
+      loop: true,
+    });
+  </script>
+
+  <button id="toggle-dark" class="botao-darkmode-fixo">🌙</button>
+
+  <script>
+    const toggleBtn = document.getElementById("toggle-dark");
+    const body = document.body;
+
+    if (localStorage.getItem("modo") === "escuro") {
+      body.classList.add("modo-escuro");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("modo-escuro");
+      const isEscuro = body.classList.contains("modo-escuro");
+      toggleBtn.textContent = isEscuro ? "☀️" : "🌙";
+      localStorage.setItem("modo", isEscuro ? "escuro" : "claro");
+    });
+  </script>
+
+  <script>
+    var abaLinks = document.getElementsByClassName("aba-links");
+    var abaConteudos = document.getElementsByClassName("aba-conteudos");
+
+    function abriraba(abaNome) {
+      for (abaLink of abaLinks) {
+        abaLink.classList.remove("link-ativo");
+      }
+      for (abaConteudo of abaConteudos) {
+        abaConteudo.classList.remove("aba-ativa");
+      }
+      event.currentTarget.classList.add("link-ativo");
+      document.getElementById(abaNome).classList.add("aba-ativa");
+    }
+  </script>
+
+  <script>
+    function toggleModalidade(card) {
+      const cards = document.querySelectorAll(".lista-modalidades div");
+
+      const isAtivo = card.classList.contains("ativo");
+
+      // Fecha todas
+      cards.forEach(c => {
+        c.classList.remove("ativo");
+        const ul = c.querySelector(".info-modalidade");
+        if (ul) {
+          ul.classList.remove("visivel");
+          ul.classList.add("oculto");
+        }
+      });
+
+      // Se não estava ativo, ativa agora
+      if (!isAtivo) {
+        card.classList.add("ativo");
+        const ul = card.querySelector(".info-modalidade");
+        if (ul) {
+          ul.classList.remove("oculto");
+          ul.classList.add("visivel");
+        }
+      }
+    }
+  </script>
+
+  <script>
+    filterSelection("tudo") // Inicializa mostrando tudo
+
+    function filterSelection(c) {
+      const x = document.getElementsByClassName("column");
+      const verMaisBtn = document.getElementById("verMaisBtn");
+      const galeria = document.getElementById("galeria-container");
+
+      let categoria = c === "tudo" ? "" : c;
+
+      for (let i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(categoria) > -1) {
+          w3AddClass(x[i], "show");
+        }
+      }
+
+      // Mostrar botão apenas se for "Mostrar Tudo"
+      if (c === "tudo") {
+        verMaisBtn.style.display = "block";
+      } else {
+        verMaisBtn.style.display = "none";
+        galeria.classList.remove("expandida");
+        verMaisBtn.textContent = "Ver mais";
+      }
+    }
+
+    function w3AddClass(element, name) {
+      const arr1 = element.className.split(" ");
+      const arr2 = name.split(" ");
+      for (let i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) === -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      const arr1 = element.className.split(" ");
+      const arr2 = name.split(" ");
+      for (let i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Botão ativo
+    var btns = document.getElementById("myBtnContainer").getElementsByClassName("btn");
+
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        const current = document.getElementsByClassName("active");
+        if (current.length > 0) {
+          current[0].classList.remove("active");
+        }
+        this.classList.add("active");
+      });
+    }
+  </script>
+
+  <script>
+
+    // Show filtered elements
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    // Hide elements that are not selected
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+
+
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="modal-caption" id="caption"></div>
+    <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+    <a class="next" onclick="changeImage(1)">&#10095;</a>
+  </div>
+
+  <script>
+    let currentImgIndex = 0;
+    const galleryImages = Array.from(document.querySelectorAll('.row .column img'));
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const captionText = document.getElementById("caption");
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentImgIndex = index;
+        openModal();
+      });
+    });
+
+    function openModal() {
+      modal.style.display = "block";
+      updateModalImage();
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function changeImage(direction) {
+      currentImgIndex += direction;
+      if (currentImgIndex < 0) currentImgIndex = galleryImages.length - 1;
+      if (currentImgIndex >= galleryImages.length) currentImgIndex = 0;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const img = galleryImages[currentImgIndex];
+      modalImg.src = img.src;
+      captionText.innerText = img.alt || "Imagem da galeria";
+    }
+  </script>
+
+  <script>
+    function toggleGaleria() {
+      const galeria = document.getElementById("galeria-container");
+      const botao = document.getElementById("verMaisBtn");
+
+      if (galeria.classList.contains("expandida")) {
+        galeria.classList.remove("expandida");
+        botao.textContent = "Ver mais";
+      } else {
+        galeria.classList.add("expandida");
+        botao.textContent = "Ver menos";
+      }
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

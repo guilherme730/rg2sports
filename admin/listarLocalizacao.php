@@ -1,10 +1,7 @@
 <?php 
-
-session_start();
-
-
+    include ("verifica.php");
+    include ("../banco/conexao.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,13 +53,59 @@ session_start();
             <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
-
     <main>
-        <div class="imagem-direita">
-        <img src="../imagens/RG2 Sports.pngTransparente.png" alt="">
-        </div>
-    </main>
-   
+
+
+<div class="admin-card">
+    <h2>Onde Estamos</h2>
+
+    <table class="tabela-admin">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Instagram</th>
+                <th>Horários</th>
+                <th>Localização</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $sql = "SELECT idLocalizacao, enderecoLocalizacao, telefoneLocalizacao, emailLocalizacao, instagramLocalizacao, horarioLocalizacao, mapaEmbedLocalizacao FROM localizacao";
+                $localizacao = mysqli_query($conexao, $sql);
+
+                if (mysqli_num_rows($localizacao) > 0) {
+                    foreach($localizacao as $localizacao) {
+            ?>
+            <tr>
+                <td><?= htmlspecialchars($localizacao['idLocalizacao']) ?></td>
+                <td><?= htmlspecialchars($localizacao['enderecoLocalizacao']) ?></td>
+                <td><?= htmlspecialchars($localizacao['telefoneLocalizacao']) ?></td>
+                <td><?= htmlspecialchars($localizacao['emailLocalizacao']) ?></td>
+                <td><?= htmlspecialchars($localizacao['instagramLocalizacao']) ?></td>
+                <td><?= htmlspecialchars($localizacao['horarioLocalizacao']) ?></td>
+                <td><?= htmlspecialchars(substr($localizacao['mapaEmbedLocalizacao'], 0, 20)) ?></td>
+
+                <td>
+                    <a href="verLocalizacao.php?idLocalizacao=<?= $localizacao['idLocalizacao'] ?>" class="botao-acao">Ver</a>
+                    <a href="fmrEditarLocalizacao.php?idLocalizacao=<?= $localizacao['idLocalizacao'] ?>" class="botao-acao botao-editar">Editar</a>
+                </td>
+            </tr>
+            <?php
+                    }
+                } else {
+                    echo '<tr><td colspan="5">Nenhum usuário encontrado.</td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+
+</div>
+</main>
+</div>
+</div>
 </body>
 
 </html>

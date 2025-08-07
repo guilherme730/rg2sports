@@ -1,10 +1,7 @@
-<?php 
-
-session_start();
-
-
+<?php
+    include ("verifica.php");
+    include ("../banco/conexao.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,13 +53,50 @@ session_start();
             <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
+<main>
+  <div class="admin-card">
+    <h2>Editar Localização</h2>
+    <?php
+                        if(isset($_GET['idLocalizacao'])) {
+                            $localizacao_id = mysqli_real_escape_string($conexao, $_GET['idLocalizacao']);
+                            $sql = "SELECT * FROM localizacao WHERE idLocalizacao = '$localizacao_id'";
+                            $query = mysqli_query($conexao, $sql);
 
-    <main>
-        <div class="imagem-direita">
-        <img src="../imagens/RG2 Sports.pngTransparente.png" alt="">
-        </div>
-    </main>
-   
+                            if (mysqli_num_rows($query) > 0) {
+                                $localizacao = mysqli_fetch_array($query);
+                    ?>
+    <form action="editarLocalizacao.php" method="post">
+      <input type="hidden" name="idLocalizacao" value="<?= $localizacao['idLocalizacao'] ?>">
+
+      <label for="enderecoLocalizacao">Endereço</label>
+      <input type="text" class="form-control" name="enderecoLocalizacao" id="enderecoLocalizacao" value="<?= $localizacao['enderecoLocalizacao']?>">
+
+      <label for="telefoneLocalizacao">Telefone</label>
+      <input type="text" name="telefoneLocalizacao" id="telefoneLocalizacao" class="form-control" value="<?= $localizacao['telefoneLocalizacao'] ?>" required><br>
+
+      <label for="emailLocalizacao">E-mail</label>
+      <input type="email" name="emailLocalizacao" id="emailLocalizacao" class="form-control" value="<?= $localizacao['emailLocalizacao'] ?>" required><br>
+
+      <label for="instagramLocalizacao">Instagram</label>
+      <input type="text" name="instagramLocalizacao" id="instagramLocalizacao" class="form-control" value="<?= $localizacao['instagramLocalizacao'] ?>" required><br>
+
+      <label for="horarioLocalizacao">Horário</label>
+      <input type="text" name="horarioLocalizacao" id="horarioLocalizacao" class="form-control" value="<?= $localizacao['horarioLocalizacao'] ?>" required><br>
+
+      <label for="mapaEmbedLocalizacao">Mapa</label>
+            <input type="text" name="mapaEmbedLocalizacao" value="<?= $localizacao['mapaEmbedLocalizacao'] ?>" />
+
+      <button type="submit" name="editarLocalizacao" class="botao-admin">Salvar Alterações</button>
+    </form>
+    <?php
+                            } else {
+                                echo "<h5>Usuário não encontrado</h5>";
+                            }
+                    }
+                    ?>
+
+  </div>
+</main>
+
 </body>
-
 </html>

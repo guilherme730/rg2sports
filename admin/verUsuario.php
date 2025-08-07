@@ -35,10 +35,10 @@ if (isset($_GET['idUsuario'])) {
 
 <body>
     <!-- MENU LATERAL (expansão por hover já em styleadmin.css) -->
-     <nav class="menu" id="menuAdmin">
+    <nav class="menu" id="menuAdmin">
         <ul class="menu-content">
-           <li><a href="adm.php"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
-            <li class="dropdown">
+            <li><a href="adm.php"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+             <li class="dropdown">
               <a href="listarSobre.php"><span class="material-symbols-outlined">dashboard</span><span>Sobre</span></a>
 </li>
 <li class="dropdown">
@@ -53,7 +53,7 @@ if (isset($_GET['idUsuario'])) {
             </li>
             <li><a href="#Contatos"><span class="material-symbols-outlined">contact_mail</span><span>Contatos</span></a>
             </li>
-            <li><a href="#OndeEstamos"><span class="material-symbols-outlined">location_on</span><span>Onde
+            <li><a href="listarLocalizacao.php"><span class="material-symbols-outlined">location_on</span><span>Onde
                         Estamos</span></a></li>
                         <li class="dropdown">
                             <a href="#"><span class="material-symbols-outlined">person</span><span>Usuários</span></a>
@@ -64,7 +64,7 @@ if (isset($_GET['idUsuario'])) {
                           </li>
                           
                         
- <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+            <li><a href="logout.php"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
         </ul>
     </nav>
 <main>
